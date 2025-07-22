@@ -5,6 +5,9 @@ import { createReactAgent } from "@langchain/langgraph/prebuilt";
 import { ChatOpenAI } from "@langchain/openai";
 import { loadAgentPrompt } from "./generate_prompt.mts";
 import { weather } from "./tools/weather.mts";
+import { transport } from "./tools/transport.mts";
+import { rappel } from "./tools/rappel.mts";
+import { ajouterTache, listerTaches, supprimerTache } from "./tools/taches.mts";
 
 const mygesPrompt = loadAgentPrompt("myges");
 
@@ -23,6 +26,13 @@ const agentCheckpointer = new MemorySaver();
 export const mygesAgent = createReactAgent({
   prompt: mygesPrompt,
   llm: agentModel,
-  tools: [weather],
+  tools: [
+    weather,
+    transport,
+    rappel,
+    ajouterTache,
+    listerTaches,
+    supprimerTache,
+  ],
   checkpointSaver: agentCheckpointer,
 });
