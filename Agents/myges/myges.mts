@@ -6,7 +6,11 @@ import { ChatOpenAI } from "@langchain/openai";
 import { loadAgentPrompt } from "./generate_prompt.mts";
 import { weather } from "./tools/weather.mts";
 import { transport } from "./tools/transport.mts";
-import { rappel } from "./tools/rappel.mts";
+import {
+  create_reminder,
+  lister_reminders,
+  supprimer_reminder,
+} from "./tools/rappel.mts";
 import { ajouterTache, listerTaches, supprimerTache } from "./tools/taches.mts";
 
 const mygesPrompt = loadAgentPrompt("myges");
@@ -29,7 +33,9 @@ export const mygesAgent = createReactAgent({
   tools: [
     weather,
     transport,
-    rappel,
+    create_reminder,
+    lister_reminders,
+    supprimer_reminder,
     ajouterTache,
     listerTaches,
     supprimerTache,
