@@ -1,10 +1,8 @@
 import { tool } from "@langchain/core/tools";
 import { z } from "zod";
 
-// Cet agent donne des infos de transport (exemple fictif, à adapter à une vraie API si besoin)
 export const transport = tool(
   async ({ ville, type }) => {
-    // Ici, on simule une réponse. Pour une vraie API, remplacer ce bloc par un fetch vers une API de transport.
     if (!ville) return "❌ Ville non précisée.";
     if (!type)
       return "❌ Type de transport non précisé (métro, bus, train, etc.).";

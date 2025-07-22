@@ -1,7 +1,6 @@
 import { tool } from "@langchain/core/tools";
 import { z } from "zod";
 
-// Agent de gestion de tâches (stockage en mémoire vive, non persistant)
 let taches: string[] = [];
 
 export const ajouterTache = tool(

@@ -1,7 +1,6 @@
 import { tool } from "@langchain/core/tools";
 import { z } from "zod";
 
-// Agent de rappel simple (stockage en mémoire vive, non persistant)
 const rappels: { texte: string; date: string }[] = [];
 
 export const rappel = tool(
